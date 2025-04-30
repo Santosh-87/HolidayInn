@@ -1,0 +1,276 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Arial', sans-serif;
+}
+
+body {
+	background-color: #f5f5f5;
+	color: #333;
+	line-height: 1.6;
+}
+
+.container {
+	display: flex;
+	min-height: 100vh;
+}
+
+.image-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+	position: absolute;
+	top: 30px;
+	left: 30px;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+}
+
+.logo img {
+	height: 50px;
+	margin-right: 10px;
+}
+
+.logo h1 {
+	color: #1a5276;
+	font-size: 24px;
+	font-weight: 700;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.logo span {
+	color: #d35400;
+}
+
+.form-section {
+	flex: 1;
+	padding: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: #e1dada;
+	max-width: 500px;
+}
+
+.image-section {
+	flex: 1;
+	background:
+		url("../resources/images/system/loginBackground.jpg")
+		no-repeat center center/cover;
+	position: relative;
+}
+
+.login-header {
+	margin-bottom: 40px;
+}
+
+.login-header h2 {
+	font-size: 32px;
+	color: #333;
+	margin-bottom: 10px;
+}
+
+.login-header p {
+	color: #777;
+}
+
+.form-group {
+	margin-bottom: 25px;
+}
+
+.form-group label {
+	display: block;
+	margin-bottom: 8px;
+	font-weight: 600;
+	color: #555;
+}
+
+.form-control {
+	width: 100%;
+	padding: 12px 15px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	font-size: 16px;
+	transition: border-color 0.3s;
+}
+
+.form-control:focus {
+	border-color: #5271ff;
+	outline: none;
+}
+
+.form-options {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 30px;
+}
+
+.remember-me {
+	display: flex;
+	align-items: center;
+}
+
+.remember-me input {
+	margin-right: 8px;
+}
+
+.forgot-password {
+	color: #5271ff;
+	text-decoration: none;
+	font-weight: 500;
+	transition: color 0.3s;
+}
+
+.forgot-password:hover {
+	color: #ff6b88;
+}
+
+.btn-login {
+	display: inline-block;
+	width: 30%;
+	padding: 14px;
+	background-color: #ff6b88;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	margin-right: 40px;
+}
+
+.btn-register {
+	display: inline-block;
+	width: 30%;
+	padding: 14px;
+	background-color: #6e6bff;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+	background-color: #e55c79;
+}
+
+.btn-register:hover {
+	background-color: #5c95e5;
+}
+
+.login-footer {
+	margin-top: 40px;
+	text-align: center;
+}
+
+.login-footer p {
+	margin-bottom: 20px;
+	color: #777;
+}
+
+.social-login {
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+}
+
+.social-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: #f5f5f5;
+	transition: transform 0.3s;
+}
+
+.social-btn:hover {
+	transform: translateY(-3px);
+}
+
+/* .register-link {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    padding: 10px 25px;
+    background-color: #5271ff;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.register-link:hover {
+    background-color: #3d5cff;
+} */
+
+/* Role selection styles */
+.role-selector {
+	margin-bottom: 25px;
+}
+
+.role-options {
+	display: flex;
+	gap: 15px;
+	margin-top: 10px;
+}
+
+/* Responsive styles */
+@media ( max-width : 968px) {
+	.image-section {
+		display: none;
+	}
+	.form-section {
+		max-width: 100%;
+	}
+}
+
+@media ( max-width : 576px) {
+	.form-section {
+		padding: 30px 20px;
+	}
+	.register-link {
+		top: 20px;
+		right: 20px;
+		padding: 8px 15px;
+		font-size: 14px;
+	}
+}
+
+/* Icon placeholders */
+.icon-facebook:before {
+	content: "f";
+}
+
+.icon-google:before {
+	content: "G";
+}
+
+.icon-twitter:before {
+	content: "t";
+}
+
+.icon-user:before {
+	content: "👤";
+}
+
+.icon-admin:before {
+	content: "🔑";
+}
