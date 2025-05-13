@@ -28,7 +28,7 @@
                         <option value="">All Room Types</option>
                         <option value="Economy Room" ${param.roomGrade == 'Economy Room' ? 'selected' : ''}>Economy Room</option>
                         <option value="Standard Room" ${param.roomGrade == 'Standard Room' ? 'selected' : ''}>Standard Room</option>
-                        <option value="Heritage Deluxe Suite" ${param.roomGrade == 'Heritage Deluxe Suite' ? 'selected' : ''}>Heritage Deluxe Suite</option>
+                        <option value="Durbar Deluxe Room" ${param.roomGrade == 'Durbar Deluxe Room' ? 'selected' : ''}>Durbar Deluxe Room</option>
                         <option value="Business Suite" ${param.roomGrade == 'Business Suite' ? 'selected' : ''}>Business Suite</option>
                         <option value="Presidential Suite" ${param.roomGrade == 'Presidential Suite' ? 'selected' : ''}>Presidential Suite</option>
                     </select>
@@ -51,7 +51,7 @@
         <c:forEach items="${rooms}" var="room" varStatus="loop">
             <div class="room-card ${loop.index % 2 == 1 ? 'reverse' : ''}">
                 <div class="room-image">
-                    <img src="${pageContext.request.contextPath}/resources/images/system/${room.roomImage}" alt="${room.roomGrade}">
+                    <img src="${pageContext.request.contextPath}/resources/images/room_images/${room.roomImage}" alt="${room.roomGrade}">
                 </div>
                 <div class="room-details">
                     <h2 class="room-title">${room.roomGrade}</h2>

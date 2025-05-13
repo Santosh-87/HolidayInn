@@ -16,6 +16,14 @@ import jakarta.servlet.http.Part;
  */
 public class ImageUtil {
 
+	/**
+	 * Extracts the filename from a multipart form data part's content-disposition header.
+	 * Parses the header to retrieve the original uploaded filename, with fallback to 
+	 * a default name if not found. Handles header parsing and edge cases securely.
+	 *
+	 * @param part the Part object containing file upload data
+	 * @return the extracted filename or "download.png" if none found
+	 */
 	public String getImageNameFromPart(Part part) {
 		// Retrieve the content-disposition header from the part
 		String contentDisp = part.getHeader("content-disposition");
@@ -82,7 +90,15 @@ public class ImageUtil {
 			return false; // Upload failed
 		}
 	}
-
+	
+	/**
+	 * Constructs the absolute filesystem path for saving uploaded images.
+	 * Combines the base application image directory with the specified subfolder.
+	 * Used to determine where profile or room images should be stored on the server.
+	 *
+	 * @param saveFolder the subfolder name within the images directory
+	 * @return complete path string ending with a forward slash
+	**/
 	public String getSavePath(String saveFolder) {
 		return "C:/Users/lamab/eclipse-workspace/HolidayInn/src/main/webapp/resources/images/" + saveFolder
 				+ "/";

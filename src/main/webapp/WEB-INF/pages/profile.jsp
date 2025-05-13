@@ -20,7 +20,7 @@
 				<div class="profile-sidebar">
 					<div class="profile-image">
 						<img class="profile-image"
-							src="${pageContext.request.contextPath}/resources/images/system/profileIcon.png"
+							src="${pageContext.request.contextPath}/resources/images/profile_images/${user.imagePath}"
 							alt="Profile Picture">
 					</div>
 					<h2 class="profile-name">${user.fullName}</h2>

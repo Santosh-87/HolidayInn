@@ -22,15 +22,8 @@
 			<nav>
 				<ul>
 					<li><a href="home">Home</a></li>
-					<li class="dropdown"><a href="rooms">Rooms</a>
-						<div class="dropdown-content">
-							<a href="#">Standard Room</a> <a href="#">Deluxe Room</a> <a
-								href="#">Suite</a> <a href="#">Executive Suite</a>
-						</div></li>
-					<li class="dropdown"><a href="aboutus">About Us</a>
-						<div class="dropdown-content">
-							<a href="#">Our Story</a> <a href="#">Our Team</a> <a href="#">Testimonials</a>
-						</div></li>
+					<li><a href="rooms">Rooms</a></li>
+					<li><a href="aboutus">About Us</a></li>
 					<li><a href="contactus">Contact Us</a></li>
 				</ul>
 			</nav>

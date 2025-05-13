@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,51 +37,52 @@
 
 		<!-- Main Content -->
 		<div class="main-content">
-			<div class="header">
-				<h1 class="page-title">Dashboard</h1>
-				<div class="header-right">
-					<button class="add-new-btn">Add New</button>
-				</div>
-			</div>
-
 			<!-- Stats Section -->
 			<div class="stats-container">
-				<div class="stat-card">
+				<!-- <div class="stat-card">
 					<div class="stat-info">
 						<h3>152</h3>
 						<p>Total Bookings</p>
 					</div>
 					<div class="stat-icon">🗓️</div>
-				</div>
+				</div>-->
 
 				<div class="stat-card">
 					<div class="stat-info">
-						<h3>87</h3>
-						<p>Current Guests</p>
+						<h3>${busiestDay.day_of_week}</h3>
+						<p>Busiest Check-In Day (${busiestDay.booking_count})</p>
 					</div>
-					<div class="stat-icon">👥</div>
+					<div class="stat-icon">📅</div>
 				</div>
 
 				<div class="stat-card">
 					<div class="stat-info">
-						<h3>35</h3>
-						<p>Available Rooms</p>
+						<h3>${topRatedRoom}</h3>
+						<p>Top Rated Room</p>
 					</div>
 					<div class="stat-icon">🏨</div>
 				</div>
 
 				<div class="stat-card">
 					<div class="stat-info">
-						<h3>$24,500</h3>
-						<p>Monthly Revenue</p>
+						<h3>${avgStayDuration} days</h3>
+						<p>Average Customer Stay</p>
+					</div>
+					<div class="stat-icon">👥</div>
+				</div>
+
+				<div class="stat-card">
+					<div class="stat-info">
+						<h3>Rs ${currentMonthRevenue}</h3>
+						<p>Revenue this month</p>
 					</div>
 					<div class="stat-icon">💰</div>
 				</div>
 
 				<div class="stat-card">
 					<div class="stat-info">
-						<h3>89%</h3>
-						<p>Occupancy Rate</p>
+						<h3>${mostExpensiveRoom.roomGrade}</h3>
+						<p>Most expensive room</p>
 					</div>
 					<div class="stat-icon">📈</div>
 				</div>
@@ -90,24 +92,32 @@
 			<div class="tables-container">
 				<div class="table-section">
 					<div class="table-header">
-						<h2 class="table-title">Room Details</h2>
-						<button class="view-all">View All</button>
+						<h2 class="table-title">Recent Bookings</h2>
 					</div>
 					<table>
 						<thead>
 							<tr>
-								<th>Room ID</th>
+								<th>Booking ID</th>
+								<th>Customer ID</th>
+								<th>Customer Name</th>
 								<th>Room Number</th>
-								<th>Room Image</th>
-								<th>Room Type</th>
-								<th>Room Grade</th>
-								<th>Bed Type</th>
-								<th>Room Status</th>
-								<th>Price</th>
+								<th>Check-In Date</th>
+								<th>Check-Out Date</th>
+								<th>Total Price</th>
 							</tr>
 						</thead>
 						<tbody>
-							<!-- Table content will be populated later -->
+							<c:forEach var="booking" items="${recentBookings}">
+								<tr>
+									<td>${booking.bookingId}</td>
+									<td>${booking.userId}</td>
+									<td>${booking.fullName}</td>
+									<td>${booking.roomNumber}</td>
+									<td>${booking.checkInDate}</td>
+									<td>${booking.checkOutDate}</td>
+									<td>${booking.totalPrice}</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>

@@ -18,7 +18,17 @@ import com.HolidayInn.service.ProfileService;
 public class ProfileController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private final ProfileService profileService = new ProfileService();
-
+	
+	/**
+	 * Handles GET requests for user profile display. Validates user session,
+	 * retrieves profile data via ProfileService, and forwards to profile view.
+	 * Redirects unauthorized users to login page.
+	 *
+	 * @param request  HttpServletRequest containing session data
+	 * @param response HttpServletResponse for redirect/forward operations
+	 * @throws ServletException if servlet processing fails
+	 * @throws IOException      if I/O operations fail
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// Get user from session
@@ -36,10 +46,5 @@ public class ProfileController extends HttpServlet {
 			request.setAttribute("user", user);
 		}
 		request.getRequestDispatcher("/WEB-INF/pages/profile.jsp").forward(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
 	}
 }

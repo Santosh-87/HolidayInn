@@ -18,7 +18,7 @@
 				<div class="profile-sidebar">
 					<div class="profile-image">
 						<img class="profile-image"
-							src="${pageContext.request.contextPath}/resources/images/system/profileIcon.png"
+							src="${pageContext.request.contextPath}/resources/images/profile_images/${user.imagePath}"
 							alt="Profile Picture">
 					</div>
 					<h2 class="profile-name">${user.fullName}</h2>
@@ -90,6 +90,35 @@
 				</div>
 			</div>
 		</div>
+		<!-- Success Modal -->
+		<div id="successModal" class="modal">
+			<div class="modal-content">
+				<div class="success-icon">✓</div>
+				<h3>Success!</h3>
+				<p>${successMessage}</p>
+			</div>
+		</div>
+
+		<!-- JavaScript to handle the success modal and redirect -->
+		<c:if test="${profileUpdateSuccess}">
+			<script>
+				document
+						.addEventListener(
+								'DOMContentLoaded',
+								function() {
+									// Show the success modal
+									var modal = document
+											.getElementById('successModal');
+									modal.style.display = "block";
+
+									// Redirect after a delay
+									setTimeout(
+											function() {
+												window.location.href = "${pageContext.request.contextPath}/profile";
+											}, 2000); // 2 seconds delay
+								});
+			</script>
+		</c:if>
 	</main>
 </body>
 </html>

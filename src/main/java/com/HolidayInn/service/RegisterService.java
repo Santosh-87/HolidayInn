@@ -11,6 +11,13 @@ import com.HolidayInn.config.DbConfig;
 import com.HolidayInn.util.PasswordUtil;
 import com.HolidayInn.util.ValidationUtil;
 
+/**
+ * Service class for handling user registration and validation operations.
+ * Manages database interactions for user creation and uniqueness checks.
+ * 
+ * @author Santosh Lama
+ * LMU ID- 23048594
+ */
 public class RegisterService {
 	private Connection dbConn;
 
@@ -26,6 +33,12 @@ public class RegisterService {
 		}
 	}
 
+    /**
+     * Adds a new user to the database with encrypted password.
+     * 
+     * @param userModel The UserModel containing user registration data
+     * @return true if registration successful, false otherwise
+     */
 	public boolean addUser(UserModel userModel) {
 
 		if (dbConn == null) {

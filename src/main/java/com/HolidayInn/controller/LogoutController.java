@@ -30,14 +30,14 @@ public class LogoutController extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * Handles user logout by performing security cleanup. Invalidates the current session
+	 * to remove all session attributes and deletes the role cookie. Always redirects to
+	 * login page after completing logout operations.
+	 *
+	 * @param request  HttpServletRequest containing the current session
+	 * @param response HttpServletResponse for cookie deletion and redirect
+	 * @throws ServletException if a servlet error occurs during processing
+	 * @throws IOException if an I/O error occurs during redirect
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

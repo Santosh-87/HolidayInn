@@ -14,15 +14,6 @@
 <body>
 	<div class="container">
 		<div class="left-panel">
-			<div class="dots">
-				<div class="dot"></div>
-				<div class="dot"></div>
-				<div class="dot"></div>
-				<div class="dot"></div>
-				<div class="dot"></div>
-				<div class="dot"></div>
-			</div>
-			<div class="cross">+</div>
 			<div class="profile-circle">
 				<img class="profile-image"
 					src="${pageContext.request.contextPath}/resources/images/system/profileIcon.png"
@@ -34,7 +25,8 @@
 
 		<div class="right-panel">
 			<h2>Registration Form</h2>
-			<form id="registrationForm" method="post" action="Register" enctype="multipart/form-data">
+			<form id="registrationForm" method="post" action="register"
+				enctype="multipart/form-data">
 				<!-- Name -->
 				<div class="form-row">
 					<div class="form-group">
@@ -138,5 +130,36 @@
 			</form>
 		</div>
 	</div>
+	
+	<!-- Success Modal -->
+	<div id="successModal" class="modal">
+		<div class="modal-content">
+			<div class="success-icon">✓</div>
+			<h3>Registration Successful!</h3>
+			<p>${successMessage}</p>
+		</div>
+	</div>
+
+	<!-- JavaScript to handle the success modal and redirect -->
+	<c:if test="${registrationSuccess}">
+		<script>
+			document
+					.addEventListener(
+							'DOMContentLoaded',
+							function() {
+								// Show the success modal
+								var modal = document
+										.getElementById('successModal');
+								modal.style.display = "block";
+
+								// Redirect after a delay
+								setTimeout(
+										function() {
+											window.location.href = "${pageContext.request.contextPath}/login";
+										}, 2000); // 2 seconds delay
+							});
+		</script>
+	</c:if>
+
 </body>
 </html>

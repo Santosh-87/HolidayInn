@@ -17,4 +17,14 @@
     <servlet-name>default</servlet-name>
     <url-pattern>/resources/images/system/*</url-pattern>
   </servlet-mapping>
+  
+    <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>/resources/images/room_images/*</url-pattern>
+  </servlet-mapping>
+  
+    <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>/resources/images/profile_images/*</url-pattern>
+  </servlet-mapping>
 </web-app>

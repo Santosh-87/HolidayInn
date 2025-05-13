@@ -24,10 +24,9 @@ import com.HolidayInn.util.ValidationUtil;
  * duplicates, uploads profile images, and creates a new user if all validations
  * pass.
  * 
- * @author Santosh Lama
- * LMU ID- 23048594
+ * @author Santosh Lama LMU ID- 23048594
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/Register" })
+@WebServlet(asyncSupported = true, urlPatterns = { "/register" })
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
 		maxFileSize = 1024 * 1024 * 10, // 10MB
 		maxRequestSize = 1024 * 1024 * 50) // 50MB
@@ -62,7 +61,18 @@ public class RegisterController extends HttpServlet {
 			throws ServletException, IOException {
 		validateRegistrationForm(request, response);
 	}
-
+	/**
+	 * Validates all registration form fields including user credentials, personal details,
+	 * and profile image. Performs comprehensive validation checks including format validation,
+	 * duplicate checks, and business rule validation. Handles image upload if validation passes.
+	 * Redirects with appropriate error messages if validation fails or proceeds with user
+	 * registration if all validations pass.
+	 *
+	 * @param request  the HttpServletRequest containing form data and file upload
+	 * @param response the HttpServletResponse for redirecting or forwarding
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException if an I/O error occurs during image upload or request handling 
+	 **/
 	public void validateRegistrationForm(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -115,7 +125,7 @@ public class RegisterController extends HttpServlet {
 		if (ValidationUtil.isNullOrEmpty(citizenshipNumber)) {
 			request.setAttribute("citizenshipNumberError", "Citizenship number is required.");
 		} else if (!ValidationUtil.isValidCitizenshipNumber(citizenshipNumber)) {
-			request.setAttribute("citizenshipNumberError", "Citizenship number must be exactly 14 digits.");
+			request.setAttribute("citizenshipNumberError", "Citizenship number must be exactly 14 numeric digits.");
 		} else if (registerService.isCitizenshipNumberTaken(citizenshipNumber)) {
 			request.setAttribute("citizenshipNumberError", "This citizenship number is already taken.");
 		}
@@ -124,7 +134,7 @@ public class RegisterController extends HttpServlet {
 		if (ValidationUtil.isNullOrEmpty(phoneNumber)) {
 			request.setAttribute("phoneError", "Phone number is required.");
 		} else if (!ValidationUtil.isValidPhoneNumber(phoneNumber)) {
-			request.setAttribute("phoneError", "Phone number must start with '98' and be 10 digits long.");
+			request.setAttribute("phoneError", "Phone number must start with '98' and be 10 numeric digits long.");
 		} else if (registerService.isPhoneTaken(phoneNumber)) {
 			request.setAttribute("phoneError", "This phone number is already registered.");
 		}
@@ -137,8 +147,6 @@ public class RegisterController extends HttpServlet {
 		} else if (registerService.isEmailTaken(email)) {
 			request.setAttribute("emailError", "This email is already registered.");
 		}
-
-		// Validate image if it was uploaded
 
 		// Validate profile image
 		// Initialize image path
@@ -203,7 +211,10 @@ public class RegisterController extends HttpServlet {
 
 		boolean success = registerService.addUser(user);
 		if (success) {
-			response.sendRedirect(request.getContextPath() + "/login");
+			// Set a success message and forward to the JSP instead of immediate redirect
+			request.setAttribute("registrationSuccess", true);
+			request.setAttribute("successMessage", "Registration successful! Redirecting to login page...");
+			request.getRequestDispatcher("WEB-INF/pages/register.jsp").forward(request, response);
 			return;
 		} else {
 			request.setAttribute("formError", "Something went wrong while registering. Please try again.");

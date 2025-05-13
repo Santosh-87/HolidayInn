@@ -36,21 +36,38 @@ public class PasswordUtil {
     private static final int SALT_LENGTH_BYTE = 16;
     private static final Charset UTF_8 = StandardCharsets.UTF_8;
 
-   
+    /**
+     * Generates a cryptographically secure random nonce (number used once).
+     *
+     * @param numBytes the length of the nonce in bytes
+     * @return a byte array containing the random nonce
+     */
     public static byte[] getRandomNonce(int numBytes) {
         byte[] nonce = new byte[numBytes];
         new SecureRandom().nextBytes(nonce);
         return nonce;
     }
 
-    // AES secret key
+    /**
+     * Generates a new AES secret key of specified size.
+     *
+     * @param keysize the key size in bits (128, 192, or 256)
+     * @return the generated SecretKey
+     * @throws NoSuchAlgorithmException if the AES algorithm is not available
+     */
     public static SecretKey getAESKey(int keysize) throws NoSuchAlgorithmException {
         KeyGenerator keyGen = KeyGenerator.getInstance("AES");
         keyGen.init(keysize, SecureRandom.getInstanceStrong());
         return keyGen.generateKey();
     }
 
-    // Password derived AES 256 bits secret key
+    /**
+     * Derives an AES secret key from a password using PBKDF2 with SHA-256.
+     *
+     * @param password the password to derive the key from
+     * @param salt the random salt to use for key derivation
+     * @return the derived SecretKey, or null if derivation fails
+     */
     public static SecretKey getAESKeyFromPassword(char[] password, byte[] salt){
            	try {
            		SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
@@ -67,7 +84,14 @@ public class PasswordUtil {
        		return null;
     }
 
-    // return a base64 encoded AES encrypted text
+    /**
+     * Encrypts a password using AES-GCM with a username-derived key.
+     *
+     * @param username the username used for key derivation
+     * @param password the password to encrypt
+     * @return Base64-encoded encrypted string containing IV, salt and ciphertext,
+     *         or null if encryption fails
+     */
     public static String encrypt(String username, String password){
     	try {
 		    // 16 bytes salt
@@ -101,7 +125,13 @@ public class PasswordUtil {
 
     }
 
-    
+    /**
+     * Decrypts an encrypted password using a username-derived key.
+     *
+     * @param encryptedPassword the Base64-encoded encrypted string (IV+salt+ciphertext)
+     * @param username the username used for key derivation
+     * @return the decrypted password as plaintext, or null if decryption fails
+     */
     public static String decrypt(String encryptedPassword, String username) {
 		try {
 			byte[] decode = Base64.getDecoder().decode(encryptedPassword.getBytes(UTF_8));

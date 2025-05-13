@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.List;
 
 import com.HolidayInn.Model.RoomModel;
-import com.HolidayInn.service.RoomService;
+import com.HolidayInn.service.RoomListingService;
 
 /**
  * Servlet controller for handling room-related operations. Manages requests for
@@ -24,10 +24,19 @@ import com.HolidayInn.service.RoomService;
  */
 
 @WebServlet(asyncSupported = true, urlPatterns = { "/rooms" })
-public class RoomController extends HttpServlet {
+public class RoomListingController extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private final RoomService roomService = new RoomService();
+    private final RoomListingService roomService = new RoomListingService();
 
+    /**
+     * Handles GET requests for room listings. Retrieves rooms either filtered by grade/price 
+     * or all available rooms if no filters specified. Forwards results to rooms.jsp view.
+     *
+     * @param request  HttpServletRequest containing optional roomGrade and priceSort parameters
+     * @param response HttpServletResponse for rendering the view
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException      if an I/O error occurs during processing
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String roomGrade = request.getParameter("roomGrade");
         String priceSort = request.getParameter("priceSort");

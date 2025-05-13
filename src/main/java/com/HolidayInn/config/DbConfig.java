@@ -21,7 +21,6 @@ public class DbConfig {
 
 	/**
 	 * Establishes a connection to the database.
-	 *
 	 * @return Connection object for the database
 	 * @throws SQLException           if a database access error occurs
 	 * @throws ClassNotFoundException if the JDBC driver class is not found

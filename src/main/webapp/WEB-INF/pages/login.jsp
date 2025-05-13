@@ -55,7 +55,7 @@
                 </div>
                 
                 <button type="submit" class="btn-login">Login</button>
-                <button type="submit" class="btn-register">Register</button>
+                <a href="register" class="btn-register">Register</a>
             </form>
             
             <div class="login-footer">

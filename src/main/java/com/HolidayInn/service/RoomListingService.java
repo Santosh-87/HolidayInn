@@ -17,10 +17,10 @@ import com.HolidayInn.config.DbConfig;
  * 
  * @author Santosh Lama LMU ID: 23048594
  */
-public class RoomService {
+public class RoomListingService {
 	private Connection dbConn;
 
-	public RoomService() {
+	public RoomListingService() {
 		try {
 			this.dbConn = DbConfig.getDbConnection();
 		} catch (SQLException | ClassNotFoundException ex) {
