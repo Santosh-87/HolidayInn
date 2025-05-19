@@ -34,7 +34,7 @@
 			<h2>Experience Luxury & Comfort</h2>
 			<p>Welcome to The Holiday Inn, where exceptional service meets
 				luxurious accommodations. Your perfect getaway awaits.</p>
-			<a href="#" class="hero-btn">Book Now</a>
+			<a href="rooms" class="hero-btn">Book Now</a>
 		</div>
 	</section>
 
@@ -86,7 +86,7 @@
 			<p>Book your stay now and get 15% off on your first visit. Enjoy
 				complimentary breakfast and spa access with every booking made this
 				month.</p>
-			<a href="#" class="cta-btn">Book Now</a>
+			<a href="rooms" class="cta-btn">Book Now</a>
 		</div>
 	</section>
 	<jsp:include page="footer.jsp" />

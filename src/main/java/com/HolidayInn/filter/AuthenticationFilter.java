@@ -86,9 +86,11 @@ public class AuthenticationFilter implements Filter {
 			return;
 		}
 		boolean isLoggedIn = SessionUtil.getAttribute(req, "username") != null;
+
 		String userRole = CookieUtil.getCookie(req, "role") != null
 				? CookieUtil.getCookie(req, "role").getValue()
 				: null;
+		
 		if ("admin".equals(userRole)) {
 			if (uri.endsWith(LOGIN) || uri.endsWith(REGISTER)) {
 				res.sendRedirect(req.getContextPath() + DASHBOARD);

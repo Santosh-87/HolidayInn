@@ -65,9 +65,9 @@ public class RoomListingService {
 		}
 
 		try (PreparedStatement ps = dbConn.prepareStatement(query.toString())) {
-			int paramIndex = 1;
+			
 			if (roomGrade != null && !roomGrade.isEmpty()) {
-				ps.setString(paramIndex++, roomGrade);
+				ps.setString(1, roomGrade);
 			}
 
 			try (ResultSet rs = ps.executeQuery()) {

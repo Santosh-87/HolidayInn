@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import com.HolidayInn.Model.UserModel;
 import com.HolidayInn.config.DbConfig;
 import com.HolidayInn.util.PasswordUtil;
-import com.HolidayInn.util.ValidationUtil;
 
 /**
  * Service class for handling user registration and validation operations.
